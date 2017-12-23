@@ -31,55 +31,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
+  .state('homePage', {
+    url: '/homePage',
+    templateUrl: 'templates/homePage.html',
+    controller: 'HomePageCtrl'
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+  .state('instructionsPage', {
+    url: '/instructionsPage',
+    templateUrl: 'templates/instructionsPage.html',
+    controller: 'InstructionsPageCtrl'
+  })
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
+  .state('setUpPage', {
+    url: '/setUpPage',
+    templateUrl: 'templates/setUpPage.html',
+    controller: 'SetUpPageCtrl'
+  })
+
+  .state('lbwPage', {
+    url: '/lbwPage',
+    templateUrl: 'templates/lbwPage.html',
+    controller: 'LbwPageCtrl'
+  })
+
+  .state('decisionPage', {
+    url: '/decisionPage',
+    templateUrl: 'templates/decisionPage.html',
+    controller: 'DecisionPageCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/homePage');
 
 });

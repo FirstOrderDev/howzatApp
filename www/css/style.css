@@ -1,1 +1,74 @@
-/* Empty. Add your own CSS if you like */
+/*Home Page*/
+.homePage .beginBtn{
+  position: absolute;
+  width: 95vw;
+  height: 10vh;
+  top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: #aeaeae;
+  color: #efefef;
+}
+
+/*Instructions Page*/
+.instructionsPage .setUpBtn{
+  position: absolute;
+  width: 95vw;
+  height: 10vh;
+  top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: #aeaeae;
+  color: #efefef;
+}
+
+/*SetUp Page*/
+.setUpPage .goLiveBtn{
+  position: absolute;
+  width: 95vw;
+  height: 10vh;
+  top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: #aeaeae;
+  color: #efefef;
+}
+
+/*Lbw Page*/
+.lbwPage .howzatBtn{
+  position: absolute;
+  width: 95vw;
+  height: 10vh;
+  top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: #aeaeae;
+  color: #efefef;
+}
+
+/*Decision Page*/
+.decisionPage .homeBtn{
+  position: absolute;
+  width: 95vw;
+  height: 10vh;
+  top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: #aeaeae;
+  color: #efefef;
+}
