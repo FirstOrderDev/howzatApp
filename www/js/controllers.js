@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LbwPageCtrl', function($scope, $state) {
-
+  
   $scope.goToDecisionPage = function() {
       $state.go('decisionPage');
   };
