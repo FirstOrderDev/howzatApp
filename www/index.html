@@ -40,6 +40,8 @@
     <script src="js/p5.dom.js"></script>
     <script src="js/jsfeat-min.js"></script>
 
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/0834541b87/UntitledProject/style.css">
+
 
   </head>
   <body ng-app="starter">
@@ -59,7 +61,7 @@
 
     <script type="text/javascript">
       console.log("Loading tracker")
-    
+
       var cnv;
       var capture;
       var curpyr, prevpyr, pointCount, pointStatus, prevxy, curxy;
@@ -125,12 +127,12 @@
       }
 
       function draw() {
-          var pointX = document.getElementById("pointX"); 
-          if(pointX){pointX.textContent = "Point X = " + Math.floor(curxy[0])} 
+          var pointX = document.getElementById("pointX");
+          if(pointX){pointX.textContent = "Point X = " + Math.floor(curxy[0])}
 
-          var pointY = document.getElementById("pointY"); 
-          if(pointY){pointY.textContent = "Point Y = " + Math.floor(curxy[1])} 
-            
+          var pointY = document.getElementById("pointY");
+          if(pointY){pointY.textContent = "Point Y = " + Math.floor(curxy[1])}
+
 
           image(capture, 0, 0, w, h);
           capture.loadPixels();

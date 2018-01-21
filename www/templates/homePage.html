@@ -1,7 +1,17 @@
-<ion-view view-title="Home Page" class="homePage">
-  <ion-content class="padding">
+<ion-view view-title="Pick your empire" class="homePage">
+  <ion-content class="padding" scroll="false">
 
-    <button class="beginBtn" ng-click="goToInstructionsPage()">Begin</button>
+
+    <button class="beginBtn" ng-click="goToInstructionsPage()"><i class="icon icon-stumps"></i>Begin</button>
+
+    <ion-slides  options="options" slider="data.slider" class="cricketerSlider">
+      <ion-slide-page>
+        <img class="adamAsset" src="img/adamAsset.png"/>
+      </ion-slide-page>
+      <ion-slide-page>
+        <img class="shaneAsset" src="img/shaneAsset.png"/>
+      </ion-slide-page>
+    </ion-slides>
 
   </ion-content>
 </ion-view>
