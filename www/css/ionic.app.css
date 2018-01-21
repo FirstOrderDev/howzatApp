@@ -15,17 +15,6 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-@font-face {
-  font-family: 'Payback';
-  src: url("../lib/ionic/fonts/PaybAck.woff2") format("woff2"), url("PaybAck.woff") format("woff"), url("PaybAck.svg#PaybAck") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Bebas';
-  src: url("../lib/ionic/fonts/Bebas.woff2") format("woff2"), url("../lib/ionic/fonts/Bebas.woff") format("woff"), url("../lib/ionic/fonts/Bebas.svg#Bebas") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 
 /*!
   Ionicons, v2.0.1
