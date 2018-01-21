@@ -17,7 +17,7 @@ $dark:                            #444 !default;
 */
 @font-face {
   font-family: 'Payback';
-  src: url("../lib/ionic/fonts/PaybAck.woff2") format("woff2"), url("../lib/ionic/fonts/PaybAck.woff") format("woff"), url("../lib/ionic/fonts/PaybAck.svg#PaybAck") format("svg");
+  src: url("../lib/ionic/fonts/PaybAck.woff2") format("woff2"), url("PaybAck.woff") format("woff"), url("PaybAck.svg#PaybAck") format("svg");
   font-weight: normal;
   font-style: normal; }
 
