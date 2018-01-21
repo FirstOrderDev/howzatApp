@@ -16,14 +16,16 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 @font-face {
-  font-family: "Payback";
-  src: url(../assets/fonts/PAYBACK.ttf) format("ttf");
-  font-weight: 200; }
+  font-family: 'Payback';
+  src: url("../lib/ionic/fonts/PaybAck.woff2") format("woff2"), url("PaybAck.woff") format("woff"), url("PaybAck.svg#PaybAck") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 @font-face {
-  font-family: "Bebas";
-  src: url(../assets/fonts/Bebas.ttf) format("ttf");
-  font-weight: 200; }
+  font-family: 'Bebas';
+  src: url("../lib/ionic/fonts/Bebas.woff2") format("woff2"), url("../lib/ionic/fonts/Bebas.woff") format("woff"), url("../lib/ionic/fonts/Bebas.svg#Bebas") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 /*!
   Ionicons, v2.0.1
@@ -9623,10 +9625,10 @@ a.button {
     margin-top: env(safe-area-inset-top); }
 
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header {
-  padding-left: calc( constant(safe-area-inset-left) + 5px);
+  padding-left: calc( constant(safe-area-inset-left) + 5px);
   padding-left: calc(env(safe-area-inset-left) + 5px);
-  padding-right: calc( constant(safe-area-inset-right) + 5px);
-  padding-right: calc( env(safe-area-inset-right) + 5px); }
+  padding-right: calc( constant(safe-area-inset-right) + 5px);
+  padding-right: calc( env(safe-area-inset-right) + 5px); }
   .platform-ios.platform-cordova:not(.fullscreen) .bar-header .buttons:last-child {
     right: calc(constant(safe-area-inset-right) + 5px);
     right: calc(env(safe-area-inset-right) + 5px); }
