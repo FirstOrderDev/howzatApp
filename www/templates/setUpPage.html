@@ -1,24 +1,9 @@
 <ion-view view-title="Set up stumps" class="setUpPage">
   <ion-content scroll="false">
-    <video autoplay></video>
+    <video id="gum-local" autoplay playsinline></video>
 
-    <script>
-      var errorCallback = function(e) {
-        console.log('Reeeejected!', e);
-      };
+    <div id="errorMsg"></div>
 
-      // Not showing vendor prefixes.
-      navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
-        var video = document.querySelector('video');
-        video.src = window.URL.createObjectURL(localMediaStream);
-
-        // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-        // See crbug.com/110938.
-        video.onloadedmetadata = function(e) {
-          // Ready to go. Do some stuff.
-        };
-      }, errorCallback);
-    </script>
     <div class="item range stumpsSize">
       <i class="icon icon-cricketBall icon1"></i>
       <input type="range" name="volume" min="0" max="20">
