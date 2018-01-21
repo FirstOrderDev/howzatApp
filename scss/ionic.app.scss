@@ -18,6 +18,17 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+@font-face {
+font-family: "Payback";
+src: url(../assets/fonts/PAYBACK.ttf) format("ttf");
+font-weight: 200
+}
+
+@font-face {
+font-family: "Bebas";
+src: url(../assets/fonts/Bebas.ttf) format("ttf");
+font-weight: 200
+}
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
