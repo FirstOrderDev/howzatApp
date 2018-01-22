@@ -1,47 +1,222 @@
 /*Home Page*/
+
+.bar-stable{
+  background: none !important;
+  margin-top: 4vh;
+}
+
+.title{
+  color: #ffffff !important;
+  font-size: 25px !important;
+  letter-spacing: 5px;
+  font-family: "PAYBACK" !important;
+}
+
+.homePage{
+  background: url("../img/stripedLawn.jpg")
+}
+
 .homePage .beginBtn{
   position: absolute;
-  width: 95vw;
+  width: 80vw;
   height: 10vh;
-  top: 20vh;
+  top: 25vh;
   margin-left: auto;
   margin-right: auto;
   left:0;
   right: 0;
   text-align: center;
-  background: #aeaeae;
+  background: none;
+  border: 2.5px solid #ffffff;
+  border-radius: 5px;
   color: #efefef;
+  font-size: 30px;
+  font-family: "BEBAS" !important;
+  letter-spacing: 1px;
+  box-shadow: 0px 0px 10px #aeaeae;
 }
+
+
+.homePage .beginBtn i{
+  position:absolute;
+  left: 5vw;
+  top: 2vh;
+  font-size: 35px;
+}
+
+.homePage .cricketerSlider{
+  height: 43vh;
+  /* border: 1px solid black; */
+  margin-top: 46vh;
+}
+
+.homePage .cricketerSlider .adamAsset{
+  position: absolute;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+  margin-top: 4vh;
+}
+
+.homePage .cricketerSlider .shaneAsset{
+  position: absolute;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+  margin-top: 2vh;
+}
+
+
+
+
+
+
+
 
 /*Instructions Page*/
-.instructionsPage .setUpBtn{
-  position: absolute;
-  width: 95vw;
-  height: 10vh;
-  top: 20vh;
-  margin-left: auto;
-  margin-right: auto;
-  left:0;
-  right: 0;
-  text-align: center;
-  background: #aeaeae;
-  color: #efefef;
+.instructionsPage{
+  background: url("../img/stripedLawn.jpg")
 }
 
-/*SetUp Page*/
-.setUpPage .goLiveBtn{
+.instructionsPage ul{
   position: absolute;
-  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+  width: 90vw;
+  margin-top: 15vh
+}
+
+.instructionsPage li{
+  font-size: 25px;
+  margin-top: 3vh;
+  letter-spacing: 0.5px;
+  line-height: normal;
+  color: #ffffff;
+  font-family: "BEBAS" !important;
+  word-spacing: 2px;
+}
+
+.instructionsPage .setUpBtn{
+  position: absolute;
+  width: 80vw;
   height: 10vh;
-  top: 20vh;
+  top: 60vh;
   margin-left: auto;
   margin-right: auto;
   left:0;
   right: 0;
   text-align: center;
-  background: #aeaeae;
+  background: none;
+  border: 2.5px solid #ffffff;
+  border-radius: 5px;
   color: #efefef;
+  font-size: 30px;
+  font-family: "BEBAS" !important;
+  letter-spacing: 1px;
+  box-shadow: 0px 0px 10px #aeaeae;
 }
+
+.instructionsPage .setUpBtn i{
+  float: left;
+  margin-left: 3vw;
+  margin-top:0.5vh;
+  margin-right: 0vw;
+  font-size: 35px;
+}
+
+
+
+
+
+
+
+
+/*SetUp Page*/
+
+/* .setUpPage video{
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /* border: 1px solid black; */
+}
+
+.setUpPage video{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+
+}
+
+ion-header-bar{
+  background: transparent!important;
+}
+
+.setUpPage .stumpsSize{
+  bottom: 25vh;
+  z-index: 1;
+  position: absolute;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+  width: 90vw;
+  background: none;
+}
+
+.setUpPage .stumpsSize .icon1{
+  font-size: 25px;
+  color: #C3272B;
+}
+
+.setUpPage .stumpsSize .icon2{
+  font-size: 35px;
+  color: #4D8FAC;
+}
+
+.setUpPage .goLiveBtn{
+  position: absolute;
+  width: 80vw;
+  height: 10vh;
+  bottom: 8vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right: 0;
+  text-align: center;
+  background: none;
+  border: 2.5px solid #ffffff;
+  border-radius: 5px;
+  color: #efefef;
+  font-size: 30px;
+  font-family: "BEBAS" !important;
+  letter-spacing: 1px;
+  box-shadow: 0px 0px 10px #aeaeae;
+}
+
+.setUpPage .goLiveBtn i{
+  float: left;
+  margin-left: 3vw;
+  margin-top:0.5vh;
+  margin-right: 0vw;
+  font-size: 35px;
+}
+
+
+
+
+
+
 
 /*Lbw Page*/
 .lbwPage .howzatBtn{

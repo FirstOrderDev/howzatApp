@@ -1,5 +1,14 @@
-<ion-view view-title="Set Up Page" class="setUpPage">
-  <ion-content>
+<ion-view view-title="Set up stumps" class="setUpPage">
+  <ion-content scroll="false">
+    <video id="gum-local" autoplay playsinline></video>
+
+    <div id="errorMsg"></div>
+
+    <div class="item range stumpsSize">
+      <i class="icon icon-cricketBall icon1"></i>
+      <input type="range" name="volume" min="0" max="20">
+      <i class="icon icon-cricketBall icon2"></i>
+    </div>
     <button class="goLiveBtn" ng-click="goToLbwPage()">Go Live</button>
   </ion-content>
 </ion-view>
