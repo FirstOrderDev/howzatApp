@@ -40,6 +40,10 @@
     <script src="js/p5.dom.js"></script>
     <script src="js/jsfeat-min.js"></script>
 
+    <script src="js/tracking.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/color_camera_gui.js"></script>
 
   </head>
   <body ng-app="starter">
@@ -59,112 +63,217 @@
 
     <script type="text/javascript">
       console.log("Loading tracker")
-    
+
       var cnv;
       var capture;
       var curpyr, prevpyr, pointCount, pointStatus, prevxy, curxy;
-      var w = 360,
-          h = 260;
+      var w = 360, h = 260;
       var maxPoints = 10;
+      var onesectimex = 0;
+      var onesectimey = 0;
 
-      function setup() {
-          const canvasHolder = select('#canvasHolder');
 
 
-          if(canvasHolder){
-            capture = createCapture(VIDEO);
-            cnv = createCanvas(w, h).parent('canvasHolder');
-            capture.size(w, h);
-            capture.hide();
+      window.onload = function() {
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var tracker = new tracking.ColorTracker(['yellow']);
 
-            curpyr = new jsfeat.pyramid_t(3);
-            prevpyr = new jsfeat.pyramid_t(3);
-            curpyr.allocate(w, h, jsfeat.U8C1_t);
-            prevpyr.allocate(w, h, jsfeat.U8C1_t);
+        var pointX = document.getElementById("pointX");
+        var pointY = document.getElementById("pointY");
+        var distance = document.getElementById("distance");
+        var balltext = document.getElementById("balltext");
 
-            pointCount = 0;
-            pointStatus = new Uint8Array(maxPoints);
-            prevxy = new Float32Array(maxPoints * 2);
-            curxy = new Float32Array(maxPoints * 2);
-          }
-      }
+        tracking.track('#video', tracker, { camera: true });
 
-      function keyPressed(key) {
-          for (var i = 0; i < 100; i++) {
-              addPoint(random(width), random(height));
-          }
-      }
+        balltext.textContent = "NO BALL"
 
-      function mousePressed() {
-          addPoint(mouseX, mouseY);
-      }
+        tracker.on('track', function(event) {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          event.data.forEach(function(rect) {
+            if (rect.color === 'custom') {
+              rect.color = tracker.customColor;
+            }
+            context.strokeStyle = 'black';
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 
-      function addPoint(x, y) {
-          if (pointCount < maxPoints) {
-              var pointIndex = pointCount * 2;
-              curxy[pointIndex] = x;
-              curxy[pointIndex + 1] = y;
-              pointCount++;
-          }
-      }
 
-      function prunePoints() {
-          var outputPoint = 0;
-          for (var inputPoint = 0; inputPoint < pointCount; inputPoint++) {
-              if (pointStatus[inputPoint] == 1) {
-                  if (outputPoint < inputPoint) {
-                      var inputIndex = inputPoint * 2;
-                      var outputIndex = outputPoint * 2;
-                      curxy[outputIndex] = curxy[inputIndex];
-                      curxy[outputIndex + 1] = curxy[inputIndex + 1];
-                  }
-                  outputPoint++;
+            setTimeout(function(){
+              onesectimex = rect.x
+              onesectimey = rect.y
+            }, 5000);
+
+            console.log(rect.x + " VS " + onesectimex);
+
+            function diff (num1, num2) {
+              if (num1 > num2) {
+                return (num1 - num2);
+              } else {
+                return (num2 - num1);
               }
-          }
-          pointCount = outputPoint;
-      }
+            };
 
-      function draw() {
-          var pointX = document.getElementById("pointX"); 
-          if(pointX){pointX.textContent = "Point X = " + Math.floor(curxy[0])} 
+            var deltaX = diff(rect.x, onesectimex);
+            var deltaY = diff(rect.y, onesectimey);
+            var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
 
-          var pointY = document.getElementById("pointY"); 
-          if(pointY){pointY.textContent = "Point Y = " + Math.floor(curxy[1])} 
-            
+            console.log(dist);
 
-          image(capture, 0, 0, w, h);
-          capture.loadPixels();
-          if (capture.pixels.length > 0) { // don't forget this!
-              var xyswap = prevxy;
-              prevxy = curxy;
-              curxy = xyswap;
-              var pyrswap = prevpyr;
-              prevpyr = curpyr;
-              curpyr = pyrswap;
+            pointX.textContent = "Point X = " + rect.x;
+            pointY.textContent = "Point Y = " + rect.y;
+            distance.textContent = "DISTANCE = " + Math.floor(dist);
+            balltext.textContent = "BALL DETECTED"
 
-              // these are options worth breaking out and exploring
-              var winSize = 20;
-              var maxIterations = 30;
-              var epsilon = 0.01;
-              var minEigen = 0.001;
+            // context.font = '11px Helvetica';
+            // context.fillStyle = "#fff";
+            // context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+            // context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
 
-              jsfeat.imgproc.grayscale(capture.pixels, w, h, curpyr.data[0]);
-              curpyr.build(curpyr.data[0], true);
-              jsfeat.optical_flow_lk.track(
-                  prevpyr, curpyr,
-                  prevxy, curxy,
-                  pointCount,
-                  winSize, maxIterations,
-                  pointStatus,
-                  epsilon, minEigen);
-              prunePoints();
-
-              for (var i = 0; i < pointCount; i++) {
-                  var pointOffset = i * 2;
-                  ellipse(curxy[pointOffset], curxy[pointOffset + 1], 8, 8);
-              }
-          }
-      }
+          });
+        });
+       initGUIControllers(tracker);
+      };
+      //
+      // function setup() {
+      //
+      //
+      //   var pointX = document.getElementById("pointX");
+      //   var pointY = document.getElementById("pointY");
+      //   var speedx = document.getElementById("speedx");
+      //   var speedy = document.getElementById("speedy");
+      //   var balltext = document.getElementById("balltext");
+      //
+      //     const canvasHolder = select('#canvasHolder');
+      //
+      //     if(canvasHolder){
+      //       capture = createCapture(VIDEO);
+      //       cnv = createCanvas(w, h).parent('canvasHolder');
+      //       capture.size(w, h);
+      //       capture.hide();
+      //
+      //       curpyr = new jsfeat.pyramid_t(3);
+      //       prevpyr = new jsfeat.pyramid_t(3);
+      //       curpyr.allocate(w, h, jsfeat.U8C1_t);
+      //       prevpyr.allocate(w, h, jsfeat.U8C1_t);
+      //
+      //       pointCount = 0;
+      //       pointStatus = new Uint8Array(maxPoints);
+      //       prevxy = new Float32Array(maxPoints * 2);
+      //       curxy = new Float32Array(maxPoints * 2);
+      //     }
+      // }
+      //
+      //
+      // function addPoint(x, y) {
+      //     if (pointCount < maxPoints) {
+      //         var pointIndex = pointCount * 2;
+      //         curxy[pointIndex] = x;
+      //         curxy[pointIndex + 1] = y;
+      //         pointCount++;
+      //     }
+      // }
+      //
+      // function removePoint(x, y) {
+      //     if (pointCount < maxPoints) {
+      //         var pointIndex = pointCount / 2;
+      //         curxy[pointIndex] = x;
+      //         curxy[pointIndex - 1] = y;
+      //         pointCount--;
+      //     }
+      //
+      //     pointX.textContent = "Point X = 0"
+      //     pointY.textContent = "Point Y = 0"
+      //     speedx.textContent = "HORIZONTAL MOVEMENT = 0"
+      //     speedy.textContent = "VERTICAL MOVEMENT = 0"
+      //     balltext.textContent = "NO BALL DETECTED"
+      // }
+      //
+      // function prunePoints() {
+      //     var outputPoint = 0;
+      //     for (var inputPoint = 0; inputPoint < pointCount; inputPoint++) {
+      //         if (pointStatus[inputPoint] == 1) {
+      //             if (outputPoint < inputPoint) {
+      //                 var inputIndex = inputPoint * 2;
+      //                 var outputIndex = outputPoint * 2;
+      //                 curxy[outputIndex] = curxy[inputIndex];
+      //                 curxy[outputIndex + 1] = curxy[inputIndex + 1];
+      //             }
+      //             outputPoint++;
+      //         }
+      //     }
+      //     pointCount = outputPoint;
+      // }
+      //
+      // function draw() {
+      //     if(pointX){
+      //       pointX.textContent = "Point X = " + Math.floor(curxy[0])
+      //     }
+      //
+      //     if(pointY){
+      //       pointY.textContent = "Point Y = " + Math.floor(curxy[1])
+      //     }
+      //
+      //     console.log(this.canseeball)
+      //     if(this.canseeball < 0){
+      //       balltext.textContent = "NO BALL DETECTED"
+      //       removePoint(rect.x, rect.y);
+      //       console.log("No Ball.")
+      //     }else{
+      //       balltext.textContent = "BALL DETECTED"
+      //     }
+      //
+      //     setTimeout(function(){
+      //       onesectimex = Math.floor(curxy[0])
+      //       onesectimey = Math.floor(curxy[1])
+      //     }, 100);
+      //
+      //     setTimeout(function(){
+      //       onesectimex = Math.floor(curxy[0])
+      //       onesectimey = Math.floor(curxy[1])
+      //     }, 100);
+      //
+      //
+      //     if(Math.floor(curxy[0] - onesectimex) > 1 || Math.floor(curxy[1] - onesectimey) > 1 ){
+      //       console.log(Math.floor(curxy[0]) + " VS " + onesectimex);
+      //
+      //       speedx.textContent = "HORIZONTAL MOVEMENT = " + Math.floor(curxy[0] - onesectimex) * 3;
+      //       speedy.textContent = "VERTICAL MOVEMENT = " + Math.floor(curxy[1] - onesectimey) * 3;
+      //     }
+      //
+      //     image(capture, 0, 0, w, h);
+      //     capture.loadPixels();
+      //     if (capture.pixels.length > 0) { // don't forget this!
+      //         var xyswap = prevxy;
+      //         prevxy = curxy;
+      //         curxy = xyswap;
+      //         var pyrswap = prevpyr;
+      //         prevpyr = curpyr;
+      //         curpyr = pyrswap;
+      //
+      //         // these are options worth breaking out and exploring
+      //         var winSize = 20;
+      //         var maxIterations = 30;
+      //         var epsilon = 0.01;
+      //         var minEigen = 0.001;
+      //
+      //         jsfeat.imgproc.grayscale(capture.pixels, w, h, curpyr.data[0]);
+      //         curpyr.build(curpyr.data[0], true);
+      //         jsfeat.optical_flow_lk.track(
+      //             prevpyr, curpyr,
+      //             prevxy, curxy,
+      //             pointCount,
+      //             winSize, maxIterations,
+      //             pointStatus,
+      //             epsilon, minEigen);
+      //         prunePoints();
+      //
+      //         for (var i = 0; i < pointCount; i++) {
+      //             var pointOffset = i * 2;
+      //             ellipse(curxy[pointOffset], curxy[pointOffset + 1], 8, 8);
+      //         }
+      //     }
+      // }
 </script>
   </body>
 </html>
