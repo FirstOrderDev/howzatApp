@@ -2,14 +2,21 @@
   <ion-content class="padding">
 
 
-    <h2 id="pointX"></h2>
-    <h2 id="pointY"></h2>
-    <h2 id="pointX"></h2>
+    <div id=canvasHolder></div>
 
-	<div id=canvasHolder></div>
+    <div class="trackervid">
+      <video id="video" width="360" height="260" preload autoplay loop muted controls></video>
+      <canvas id="canvas" width="360" height="260"></canvas>
+    </div>
+
+    <div class="quickstats">
+     <h2 id="pointX"></h2>
+     <h2 id="pointY"></h2>
+
+     <h2 id="distance"></h2>
+     <h2 id="balltext"></h2>
+    </div>
 
     <button class="howzatBtn" ng-click="goToDecisionPage()">Howzat!</button>
   </ion-content>
 </ion-view>
-
-

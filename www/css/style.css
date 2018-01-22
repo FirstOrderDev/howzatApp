@@ -248,7 +248,7 @@ ion-header-bar{
   position: absolute;
   width: 95vw;
   height: 10vh;
-  top: 20vh;
+  top: 80vh;
   margin-left: auto;
   margin-right: auto;
   left:0;
@@ -257,6 +257,25 @@ ion-header-bar{
   background: #aeaeae;
   color: #efefef;
 }
+
+
+.trackervid video, canvas {
+  margin-left: 0px;
+  margin-top: 0vh;
+  position: absolute;
+}
+
+.lbwPage .quickstats{
+    margin-top: 50vh;
+    position: absolute;
+}
+
+
+.lbwPage h2{
+  font-size: 21px;
+}
+
+
 
 /*Decision Page*/
 .decisionPage .homeBtn{
