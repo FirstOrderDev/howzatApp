@@ -35,10 +35,24 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SetUpPageCtrl', function($scope, $state) {
+.controller('SetUpPageCtrl', function($scope, $state, $window) {
 
   // Not showing vendor prefixes.
-  console.log("HEYYYY")
+  console.log("HEYYYY");
+
+  var errorElement = document.querySelector('#errorMsg');
+  var video = document.querySelector('video');
+
+  // function handleSuccess(stream) {
+  //   var videoTracks = stream.getVideoTracks();
+  //   console.log('Got stream with constraints:', constraints);
+  //   console.log('Using video device: ' + videoTracks[0].label);
+  //   stream.oninactive = function() {
+  //     console.log('Stream inactive');
+  //   };
+  //   window.stream = stream; // make variable available to browser console
+  //   video.srcObject = stream;
+  // }
 
   var errorElement = document.querySelector('#errorMsg');
   var video = document.querySelector('video');
@@ -79,7 +93,7 @@ angular.module('starter.controllers', [])
     }
   }
 
-  navigator.mediaDevices.getUserMedia(constraints).
+  navigator.getUserMedia(constraints).
       then(handleSuccess).catch(handleError);
 
 })

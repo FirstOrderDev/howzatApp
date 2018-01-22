@@ -15,6 +15,15 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+@font-face {
+  font-family: 'BEBAS';
+  src: url("../lib/ionic/fonts/BEBAS.eot");
+  src: url("../lib/ionic/fonts/BEBAS.eot") format("embedded-opentype"), url("../lib/ionic/fonts/BEBAS.woff2") format("woff2"), url("../lib/ionic/fonts/BEBAS.woff") format("woff"), url("../lib/ionic/fonts/BEBAS.ttf") format("truetype"), url("../lib/ionic/fonts/BEBAS.svg#BEBAS") format("svg");
+
+@font-face {
+  font-family: 'PAYBACK';
+  src: url("../lib/ionic/fonts/PAYBACK.eot");
+  src: url("../lib/ionic/fonts/PAYBACK.eot") format("embedded-opentype"), url("../lib/ionic/fonts/PAYBACK.woff2") format("woff2"), url("../lib/ionic/fonts/PAYBACK.woff") format("woff"), url("../lib/ionic/fonts/PAYBACK.ttf") format("truetype"), url("../lib/ionic/fonts/PAYBACK.svg#PAYBACK") format("svg");
 
 /*!
   Ionicons, v2.0.1

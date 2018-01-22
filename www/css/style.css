@@ -9,7 +9,7 @@
   color: #ffffff !important;
   font-size: 25px !important;
   letter-spacing: 5px;
-  font-family: "PAYBACK" !important;
+  font-family: "PAYBACK"!important;
 }
 
 .homePage{
@@ -149,15 +149,40 @@
   /* border: 1px solid black; */
 }
 
-.setUpPage video{
-  width: 100% !important;
+.setUpPage .videoCapture{
+  position: absolute !important;
+  width: 80vw !important;
   height: 100% !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
 
 }
 
+/* .setUpPage p{
+  text-align: center;
+} */
+
+/* .setUpPage{
+  background: #26A65B;
+} */
+
 ion-header-bar{
   background: transparent!important;
+}
+
+.setUpPage .redBox{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  top: 10vh;
+  width: 50vw;
+  height: 40vh;
+  background: #C93756;
+  border: 2px solid red;
+  border-radius: 10px;
+  opacity: 0.4;
+  z-index: 1;
 }
 
 .setUpPage .stumpsSize{
