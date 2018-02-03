@@ -1,17 +1,17 @@
 <ion-view view-title="Set up stumps" class="setUpPage">
   <ion-content scroll="false">
-    <video class="videoCapture" autoplay playsinline></video>
-    <!-- <p>
+    <!-- <video class="videoCapture" autoplay playsinline></video>
+    <p>
       CAMERA
-    </p> -->
+    </p>
 
-    <div id="errorMsg"></div>
+    <div id="errorMsg"></div> -->
 
-    <div class="redBox"></div>
+    <div class="redBox" id="redBox"></div>
 
     <div class="item range stumpsSize">
       <i class="icon icon-cricketBall icon1"></i>
-      <input type="range" name="volume" min="0" max="20">
+      <input type="range" name="volume" min="11" max="50" id="slider" ng-model="sliderValue" ng-change="sliderChanged(sliderValue)">
       <i class="icon icon-cricketBall icon2"></i>
     </div>
     <button class="goLiveBtn" ng-click="goToLbwPage()">Go Live</button>

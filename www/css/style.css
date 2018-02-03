@@ -177,7 +177,7 @@ ion-header-bar{
   right:0;
   top: 10vh;
   width: 50vw;
-  height: 40vh;
+  height: 45vh;
   background: #C93756;
   border: 2px solid red;
   border-radius: 10px;
@@ -278,6 +278,7 @@ ion-header-bar{
 
 
 /*Decision Page*/
+
 .decisionPage .homeBtn{
   position: absolute;
   width: 95vw;

@@ -54,51 +54,67 @@ angular.module('starter.controllers', [])
   //   video.srcObject = stream;
   // }
 
-  var errorElement = document.querySelector('#errorMsg');
-  var video = document.querySelector('video');
+  // var errorElement = document.querySelector('#errorMsg');
+  // var video = document.querySelector('video');
+  //
+  // // Put variables in global scope to make them available to the browser console.
+  // var constraints = window.constraints = {
+  //   audio: false,
+  //   video: true
+  // };
+  //
+  // function handleSuccess(stream) {
+  //   var videoTracks = stream.getVideoTracks();
+  //   console.log('Got stream with constraints:', constraints);
+  //   console.log('Using video device: ' + videoTracks[0].label);
+  //   stream.oninactive = function() {
+  //     console.log('Stream inactive');
+  //   };
+  //   window.stream = stream; // make variable available to browser console
+  //   video.srcObject = stream;
+  // }
+  //
+  // function handleError(error) {
+  //   if (error.name === 'ConstraintNotSatisfiedError') {
+  //     errorMsg('The resolution ' + constraints.video.width.exact + 'x' +
+  //         constraints.video.width.exact + ' px is not supported by your device.');
+  //   } else if (error.name === 'PermissionDeniedError') {
+  //     errorMsg('Permissions have not been granted to use your camera and ' +
+  //       'microphone, you need to allow the page access to your devices in ' +
+  //       'order for the demo to work.');
+  //   }
+  //   errorMsg('getUserMedia error: ' + error.name, error);
+  // }
+  //
+  // function errorMsg(msg, error) {
+  //   errorElement.innerHTML += '<p>' + msg + '</p>';
+  //   if (typeof error !== 'undefined') {
+  //     console.error(error);
+  //   }
+  // }
+  //
+  // navigator.devices.getUserMedia(constraints).
+  //     then(handleSuccess).catch(handleError);
 
-  // Put variables in global scope to make them available to the browser console.
-  var constraints = window.constraints = {
-    audio: false,
-    video: true
+  $scope.sliderValue = 50;
+
+  $scope.sliderChanged = function(){
+    var sliderValue = document.getElementById("slider").value;
+    console.log(sliderValue);
+
+    var redBox = document.getElementById("redBox");
+
+    redBox.style.width = "" + 1*sliderValue + "" + "vw";
+    redBox.style.height = sliderValue*0.9 + "vh";
+  }
+
+  $scope.goToLbwPage = function() {
+      $state.go('lbwPage');
   };
-
-  function handleSuccess(stream) {
-    var videoTracks = stream.getVideoTracks();
-    console.log('Got stream with constraints:', constraints);
-    console.log('Using video device: ' + videoTracks[0].label);
-    stream.oninactive = function() {
-      console.log('Stream inactive');
-    };
-    window.stream = stream; // make variable available to browser console
-    video.srcObject = stream;
-  }
-
-  function handleError(error) {
-    if (error.name === 'ConstraintNotSatisfiedError') {
-      errorMsg('The resolution ' + constraints.video.width.exact + 'x' +
-          constraints.video.width.exact + ' px is not supported by your device.');
-    } else if (error.name === 'PermissionDeniedError') {
-      errorMsg('Permissions have not been granted to use your camera and ' +
-        'microphone, you need to allow the page access to your devices in ' +
-        'order for the demo to work.');
-    }
-    errorMsg('getUserMedia error: ' + error.name, error);
-  }
-
-  function errorMsg(msg, error) {
-    errorElement.innerHTML += '<p>' + msg + '</p>';
-    if (typeof error !== 'undefined') {
-      console.error(error);
-    }
-  }
-
-  navigator.getUserMedia(constraints).
-      then(handleSuccess).catch(handleError);
 
 })
 
-.controller('LbwPageCtrl', function($scope, $state) {
+.controller('LbwPageCtrl', function($scope, $state, $window) {
 
   $scope.goToDecisionPage = function() {
       $state.go('decisionPage');
@@ -106,7 +122,32 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('DecisionPageCtrl', function($scope, $state, $ionicHistory) {
+.controller('DecisionPageCtrl', function($scope, $state, $ionicHistory, $window) {
+  // var scene = new THREE.Scene();
+  // console.log(scene)
+  // var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  //
+  // var renderer = new THREE.WebGLRenderer();
+  // renderer.setSize( window.innerWidth, window.innerHeight );
+  // document.body.appendChild( renderer.domElement );
+  //
+  // var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+  // var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+  // var cube = new THREE.Mesh( geometry, material );
+  // scene.add( cube );
+  //
+  // camera.position.z = 5;
+  //
+  // var animate = function () {
+  //   requestAnimationFrame( animate );
+  //
+  //   cube.rotation.x += 0.1;
+  //   cube.rotation.y += 0.1;
+  //
+  //   renderer.render(scene, camera);
+  // };
+  //
+  // animate();
 
   $ionicHistory.nextViewOptions({
     disableBack: true
