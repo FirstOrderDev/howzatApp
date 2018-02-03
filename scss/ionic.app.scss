@@ -19,6 +19,10 @@ $dark:                            #444 !default;
 // @import url('BABAS.scss');
 // @import url('PAYBACK.scss');
 
+html, body, .ion-app, .ion-content {
+  background-color: transparent;
+}
+
 @font-face {
     font-family: 'BEBAS' ;
     src: url('../lib/ionic/fonts/BEBAS.eot');

@@ -35,13 +35,84 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SetUpPageCtrl', function($scope, $state, $window) {
+.controller('SetUpPageCtrl', function($scope, $state, $ionicPlatform) {
 
-  // Not showing vendor prefixes.
-  console.log("HEYYYY");
+  console.log("SetUp Page");
 
-  var errorElement = document.querySelector('#errorMsg');
-  var video = document.querySelector('video');
+  // Check that the browser supports getUserMedia.
+  // If it doesn't show an alert, otherwise continue.
+  if (navigator.getUserMedia) {
+    // Request the camera.
+    navigator.getUserMedia(
+      // Constraints
+      {
+        video: true
+      },
+
+      // Success Callback
+      function(localMediaStream) {
+
+      },
+
+      // Error Callback
+      function(err) {
+        // Log the error to the console.
+        console.log('The following error occurred when trying to use getUserMedia: ' + err);
+      }
+    );
+
+  } else {
+    alert('Sorry, your browser does not support getUserMedia');
+  }
+
+
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    // document.addEventListener("deviceready", onDeviceReady, false);
+    // function onDeviceReady() {
+    //     console.log(navigator.device.capture);
+    //
+    //
+    // }
+
+    //console.log(navigator.getUserMedia());
+    // navigator.device.capture;
+    //
+    // var options = {
+    //   x: 0,
+    //   y: 0,
+    //   width: window.screen.width,
+    //   height: window.screen.height,
+    //   camera: window.cordova.CameraPreview.CAMERA_DIRECTION.BACK,
+    //   toBack: false,
+    //   tapPhoto: false,
+    //   tapFocus: false,
+    //   previewDrag: false
+    // };
+    //
+    // window.CameraPreview.startCamera(options);
+
+
+
+
+
+  // if (window.cordova && window.cordova.plugins) {
+  //   let options = {
+  //     x: 0,
+  //     y: 0,
+  //     width: window.screen.width,
+  //     height: window.screen.height,
+  //     camera: cordova.plugins.CameraPreview.CAMERA_DIRECTION.BACK,
+  //     toBack: false,
+  //     tapPhoto: false,
+  //     tapFocus: false,
+  //     previewDrag: false
+  //   };
+  //
+  //   cordova.plugins.CameraPreview.startCamera(options);
+  // }
+
+
 
   // function handleSuccess(stream) {
   //   var videoTracks = stream.getVideoTracks();
