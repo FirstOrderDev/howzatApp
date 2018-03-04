@@ -47,6 +47,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'InstructionsPageCtrl'
   })
 
+  .state('chooseEquipmentPage', {
+    url: '/chooseEquipmentPage',
+    templateUrl: 'templates/chooseEquipmentPage.html',
+    controller: 'ChooseEquipmentPageCtrl'
+  })
+
   .state('setUpPage', {
     url: '/setUpPage',
     templateUrl: 'templates/setUpPage.html',

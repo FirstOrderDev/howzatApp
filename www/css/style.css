@@ -1,3 +1,7 @@
+html, body, ion-app, ion-content, ion-page, .nav-decor {
+  background-color: transparent !important;
+}
+
 /*Home Page*/
 
 .bar-stable{
@@ -109,7 +113,7 @@
   position: absolute;
   width: 80vw;
   height: 10vh;
-  top: 60vh;
+  top: 70vh;
   margin-left: auto;
   margin-right: auto;
   left:0;
@@ -132,6 +136,129 @@
   margin-right: 0vw;
   font-size: 35px;
 }
+
+
+/* Equipment Page */
+
+.chooseEquipmentPage{
+  background: url("../img/stripedLawn.jpg");
+}
+
+.chooseEquipmentPage .title{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  font-size: 18px !important;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index: 9000 !important;
+}
+
+.chooseEquipmentPage .stumpsSlider{
+  height: 38vh;
+  margin-bottom: 3vh;
+  /* border: 1px solid black; */
+  margin-top: 8vh;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: center;
+
+}
+
+.chooseEquipmentPage .stumpsSlider img{
+  width: 60vw;
+  object-fit: contain;
+
+}
+
+.chooseEquipmentPage .stumpsSlider .bin{
+  width: 38vw !important;
+  object-fit: contain;
+
+}
+
+.swiper-pagination-bullet{
+  margin-bottom: -2vh !important;
+   /* background:white!important;
+   border-radius: 100%;
+   height: 17px;
+   width: 17px;
+   display: none; */
+}
+
+.chooseEquipmentPage .ballSelection{
+  width: 100%;
+  height: 46vh;
+  background: #F2F1EF;
+  border-top: 1px solid #ededed;
+}
+
+.chooseEquipmentPage .ballSelection .row .col{
+  text-align: center;
+  margin-top: 1%;
+}
+
+.chooseEquipmentPage .ballSelection .row .col p{
+  font-size: 8px;
+  font-family: "PAYBACK" !important;
+  color: #6C7A89
+}
+
+.chooseEquipmentPage .ballSelection .row .col i{
+  /* border: 1px solid black; */
+  font-size: 55px;
+  opacity: 0.9;
+}
+
+.chooseEquipmentPage .ballSelection .row .col .overlay{
+  position: absolute;
+  height: 12vh;
+  margin-top: -13vh;
+  width: 24vw;
+  margin-left: 3vw;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  background: #aeaeae;
+  opacity: 0.3;
+}
+
+.chooseEquipmentPage .ballSelection .howzatBall{
+  color: #FF00FF;
+}
+
+.chooseEquipmentPage .ballSelection .green{
+  color: #26A65B;
+}
+
+.chooseEquipmentPage .ballSelection .red{
+  color: #DC3023;
+}
+
+.chooseEquipmentPage .ballSelection .blue{
+  color: #22A7F0;
+}
+
+.chooseEquipmentPage .ballSelection .yellow{
+  color: #F4D03F;
+}
+
+.chooseEquipmentPage .ballSelection .orange{
+  color: #F9690E;
+}
+
+.chooseEquipmentPage .ballSelection .purple{
+  color: #8E44AD;
+}
+
+.chooseEquipmentPage .ballSelection .gray{
+  color: #BDC3C7;
+}
+
+/* End Equipment Page */
 
 
 

@@ -29,8 +29,47 @@ angular.module('starter.controllers', [])
 
 .controller('InstructionsPageCtrl', function($scope, $state) {
 
-  $scope.goToSetUpPage = function() {
-      $state.go('setUpPage');
+  $scope.goToChooseEquipmentPage = function() {
+      $state.go('chooseEquipmentPage');
+  };
+
+})
+
+.controller('ChooseEquipmentPageCtrl', function($scope, $state, $window) {
+
+  $scope.activeIndex = 0;
+  $scope.index = 0;
+
+  $scope.colours = ["FF00FF", "26A65B", "DC3023", "22A7F0", "F4D03F", "F9690E", "8E44AD", "BDC3C7"];
+
+  $scope.options = {
+    loop: false,
+    speed: 500,
+  }
+
+  $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+    // data.slider is the instance of Swiper
+    $scope.slider = data.slider;
+  });
+
+  $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+    console.log('Slide change is beginning');
+  });
+
+  $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+    // note: the indexes are 0-based
+    $scope.activeIndex = data.slider.activeIndex;
+    $scope.previousIndex = data.slider.previousIndex;
+  });
+
+  $scope.goToSetUpPage = function(index) {
+
+    console.log("Stumps " + $scope.activeIndex)
+
+    console.log("Colour " + $scope.colours[index])
+
+
+    $state.go('setUpPage');
   };
 
 })
@@ -41,29 +80,34 @@ angular.module('starter.controllers', [])
 
   // Check that the browser supports getUserMedia.
   // If it doesn't show an alert, otherwise continue.
-  if (navigator.getUserMedia) {
-    // Request the camera.
-    navigator.getUserMedia(
-      // Constraints
-      {
-        video: true
-      },
 
-      // Success Callback
-      function(localMediaStream) {
 
-      },
+    $scope.StartCamera = function(){
 
-      // Error Callback
-      function(err) {
-        // Log the error to the console.
-        console.log('The following error occurred when trying to use getUserMedia: ' + err);
-      }
-    );
+        console.log("StartCamera");
+        var options = {
+          x: 0,
+          y: 0,
+          width: window.screen.width,
+          height: window.screen.height,
+          camera: CameraPreview.CAMERA_DIRECTION.BACK,
+          toBack: false,
+          tapPhoto: false,
+          tapFocus: false,
+          previewDrag: false
+        };
+        cordova.plugins.camerapreview.startCamera(options);
 
-  } else {
-    alert('Sorry, your browser does not support getUserMedia');
-  }
+        console.log('camerapreview startCamera');
+    }
+
+
+    document.addEventListener("deviceready", function(){
+
+        console.log('deviceready');
+        $scope.StartCamera();
+
+    }, false);
 
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

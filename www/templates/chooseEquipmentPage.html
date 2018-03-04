@@ -1,0 +1,99 @@
+<ion-view class="chooseEquipmentPage">
+
+  <ion-content scroll="false">
+
+    <p class="animated bounceInDown title">
+      Choose your stumps and ball
+    </p>
+
+    <ion-slides  options="options" slider="data.slider" class="stumpsSlider">
+      <ion-slide-page>
+        <img class="howzatStumps" src="img/howzatStumps.png"/>
+      </ion-slide-page>
+      <ion-slide-page>
+        <img class="bin" src="img/bin.png"/>
+      </ion-slide-page>
+      <ion-slide-page>
+        <img class="garageDoor" src="img/garageDoor.png"/>
+      </ion-slide-page>
+      <ion-slide-page>
+        <img class="surfBoard" src="img/surfboard.png"/>
+      </ion-slide-page>
+      <ion-slide-page>
+        <img class="fence" src="img/fence.png"/>
+      </ion-slide-page>
+    </ion-slides>
+
+    <div class="ballSelection">
+      <div class="row">
+        <div class="col">
+          <i class="icon icon-howzatBall2 howzatBall" ng-click="index=0"></i>
+          <p>Howzat Ball!</p>
+          <div class="overlay" ng-if="index==0">
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-cricketBall green" ng-click="index=1"></i>
+          <p>Green</p>
+          <div class="overlay" ng-if="index==1">
+
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-cricketBall red" ng-click="index=2"></i>
+          <p>Red</p>
+          <div class="overlay" ng-if="index==2">
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <i class="icon icon-cricketBall blue" ng-click="index=3" ></i>
+          <p>Blue</p>
+          <div class="overlay" ng-if="index==3">
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-cricketBall yellow" ng-click="index=4"></i>
+          <p>Yellow</p>
+          <div class="overlay" ng-if="index==4">
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-cricketBall orange" ng-click="index=5"></i>
+          <p>Orange</p>
+          <div class="overlay" ng-if="index==5">
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <i class="icon icon-cricketBall purple" ng-click="index=6"></i>
+          <p>Purple</p>
+          <div class="overlay" ng-if="index==6">
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-cricketBall gray" ng-click="index=7"></i>
+          <p>Gray</p>
+          <div class="overlay" ng-if="index==7">
+          </div>
+
+        </div>
+        <div class="col">
+          <i class="icon icon-next" ng-click="goToSetUpPage(index)"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- <button class="nextBtn" ng-click="goToSetUpPage()"><i class="icon icon-setUp"></i>Set Up Stumps</button> -->
+  </ion-content>
+
+</ion-view>
