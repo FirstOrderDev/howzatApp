@@ -23,8 +23,7 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/00cf85e4ee/UntitledProject/style.css">
-
+<link rel="stylesheet" href="https://i.icomoon.io/public/temp/27b6ecd594/UntitledProject/style.css">
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -88,10 +87,20 @@
         var context = canvas.getContext('2d');
         var tracker = new tracking.ColorTracker(['yellow']);
 
+        var maximumIndex = 0;
+        //var maximumIndex2 = 0;
+        var counter = 0;
+        var yValues = [];
+        var xValues = [];
+        var maxY = yValues[0];
+        var maxX = xValues[maximumIndex];
+
+
         var pointX = document.getElementById("pointX");
         var pointY = document.getElementById("pointY");
         var distance = document.getElementById("distance");
         var balltext = document.getElementById("balltext");
+        var maxText = document.getElementById("maxText");
 
         tracking.track('#video', tracker, { camera: true });
 
@@ -126,12 +135,88 @@
             var deltaY = diff(rect.y, onesectimey);
             var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
 
+
+            //BALL TRACKED
+            // 1. Check if a maximum has been reached (The ball has hit the ground)
+            // 2. Check if the y value is decreasing
+            // 3. If it is decreasing from the maximum then infer that the ball has bounced (Bounced += 1)
+            // 4. If the ball has bounced once and it iside of the stumps OUT else NOT out
+
+            //BALL NOT TRACKED
+            // 1. Call Probability object
+
+
+            // function hasBounced (max, y) {
+            //
+            //   if(y<max){
+            //     counter += 1
+            //   }
+            //   else{
+            //     console.log("Should be a new max");
+            //     counter = 0;
+            //   }
+            //
+            // }
+            //
+            // if(rect.y>maximum){
+            //   maximum = rect.y;
+            //   console.log("MAX: " + rect.y)
+            // }
+
+            function gradient(x1,y1,x2,y2){
+
+                var gradient = y2-y1/x2-x1;
+
+                return gradient;
+
+
+            }
+
+
+
+            //hasBounced(maximum, rect.y);
+
+            yValues.push(rect.y);
+            xValues.push(rect.x);
+
+            //Positive gradient
+            if(yValues.length>1){
+              var grad = gradient(rect.x, rect.y, xValues[xValues.length-2], yValues[yValues.length-2])
+              if(grad>0){
+                console.log("POSITIVE");
+                maxText.textContent = "Ball is Going UP";
+              }
+              else if(grad < 0){
+                console.log("NEGATIVE")
+                maxText.textContent = "Ball is Going Down";
+              }
+              else{
+                maxText.textContent = "Ball just Bounced"
+              }
+            }
+
+
+
+
+            console.log(yValues);
+            console.log(xValues);
+
+
+
+
+
+
+
+
+            //Detect a ball bounce
+
             console.log(dist);
 
             pointX.textContent = "Point X = " + rect.x;
             pointY.textContent = "Point Y = " + rect.y;
             distance.textContent = "DISTANCE = " + Math.floor(dist);
             balltext.textContent = "BALL DETECTED"
+
 
             // context.font = '11px Helvetica';
             // context.fillStyle = "#fff";
